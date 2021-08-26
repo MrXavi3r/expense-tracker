@@ -1,3 +1,4 @@
+import { set } from "mongoose";
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
@@ -11,11 +12,13 @@ export const AddTransaction = () => {
 
       const newTransaction = {
         id: Math.floor(Math.random() * 100000000),
-        text,
+        text: text,
         amount: +amount
       }
 
       addTransaction(newTransaction)
+      setText('')
+      setAmount(0)
   }
 
   return (
