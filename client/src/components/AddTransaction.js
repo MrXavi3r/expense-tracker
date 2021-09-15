@@ -7,19 +7,19 @@ export const AddTransaction = () => {
   const [amount, setAmount] = useState(0);
   const { addTransaction } = useContext(GlobalContext);
 
-  const onSubmit = e => {
-      e.preventDefault();
+  const onSubmit = (e) => {
+    e.preventDefault();
 
-      const newTransaction = {
-        id: Math.floor(Math.random() * 100000000),
-        text: text,
-        amount: +amount
-      }
+    const newTransaction = {
+      id: Math.floor(Math.random() * 100000000),
+      text: text,
+      amount: +amount,
+    };
 
-      addTransaction(newTransaction)
-      setText('')
-      setAmount(0)
-  }
+    addTransaction(newTransaction);
+    setText("");
+    setAmount(0);
+  };
 
   return (
     <>
@@ -46,7 +46,9 @@ export const AddTransaction = () => {
             placeholder="Enter amount..."
           />
         </div>
-        <button type="submit" className="btn">Add transaction</button>
+        <button type="submit" className="btn">
+          Add transaction
+        </button>
       </form>
     </>
   );
