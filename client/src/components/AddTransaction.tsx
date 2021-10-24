@@ -1,13 +1,12 @@
-import { set } from "mongoose";
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
-export const AddTransaction = () => {
+export const AddTransaction = (): JSX.Element => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
   const { addTransaction } = useContext(GlobalContext);
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
 
     const newTransaction = {
@@ -16,6 +15,7 @@ export const AddTransaction = () => {
       amount: +amount,
     };
 
+    // @ts-ignore
     addTransaction(newTransaction);
     setText("");
     setAmount(0);
@@ -42,7 +42,7 @@ export const AddTransaction = () => {
           <input
             type="number"
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => setAmount(Number(e.target.value))}
             placeholder="Enter amount..."
           />
         </div>
